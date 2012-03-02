@@ -4,8 +4,9 @@
 {% load i18n adminmedia fb_tags fb_versions %}
 
 <!-- STYLESHEETS -->
-{% block stylesheets %}
+{% block extrastyle %}
     {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />
     <link rel="stylesheet" type="text/css" href="{{ settings_var.URL_FILEBROWSER_MEDIA }}css/filebrowser.css" />
 {% endblock %}
 
@@ -35,7 +36,7 @@
 
 <!-- COLTYPE/BODYCLASS -->
 {% block bodyclass %}change-form filebrowser{% if query.pop %} popup{% endif %}{% endblock %}
-{% block content-class %}content-flexible{% endblock %}
+{% block coltype %}flex{% endblock %}
 
 <!-- BREADCRBUMBS -->
 {% block breadcrumbs %}{% include "filebrowser/include/breadcrumbs.html" %}{% endblock %}
@@ -47,7 +48,7 @@
         <form action="{% query_string "" "filter_date,filter_type,q,p" %}" method="post">{% csrf_token %}
             {% if form.errors %}<p class="errornote">{% trans 'Please correct the following errors.' %}</p>{% endif %}
             <fieldset class="module">
-                <div class="row {% if form.name.errors %}errors{% endif %}">
+                <div class="form-row {% if form.name.errors %}errors{% endif %}">
                     <div class="column span-4"><label class="required" for="id_name">{{ form.name.label }}</label></div>
                     <div class="column span-flexible">
                         {{ form.name }}
@@ -59,7 +60,7 @@
             {% if fileobject.filetype == "Image" %}
             <fieldset class="module collapse open">
                 <h2 class="collapse-handler">{% trans "Edit" %}</h2>
-                <div class="row {% if form.custom_action.errors %}errors{% endif %}">
+                <div class="form-row {% if form.custom_action.errors %}errors{% endif %}">
                     <div class="column span-4"><label class="required" for="id_custom_action">{{ form.custom_action.label }}</label></div>
                     <div class="column span-8">
                         {{ form.custom_action }}
@@ -72,7 +73,7 @@
             {% if fileobject.filetype == "Folder" %}
             <fieldset class="module collapse open">
                 <h2 class="collapse-handler">{% trans "Folder Information" %}</h2>
-                <div class="row">
+                <div class="form-row">
                     <div class="column span-4"><label>{% trans "Date" %}</label></div>
                     <div class="column span-flexible">
                         <p class="readonly">
@@ -85,7 +86,7 @@
             {% if fileobject.filetype != "Folder" %}
             <fieldset class="module collapse open">
                 <h2 class="collapse-handler">{% trans "File Information" %}</h2>
-                <div class="row">
+                <div class="form-row">
                     <div class="column span-4"><label>{% trans "URL" %}</label></div>
                     <div class="column span-flexible">
                         <p class="readonly">
@@ -93,7 +94,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="row">
+                <div class="form-row">
                     <div class="column span-4"><label>{% trans "Filesize" %}</label></div>
                     <div class="column span-flexible">
                         <p class="readonly">
@@ -101,7 +102,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="row">
+                <div class="form-row">
                     <div class="column span-4"><label>{% trans "Date" %}</label></div>
                     <div class="column span-flexible">
                         <p class="readonly">
@@ -110,7 +111,7 @@
                     </div>
                 </div>
                 {% if fileobject.filetype == "Image" %}
-                    <div class="row">
+                    <div class="form-row">
                         <div class="column span-4"><label>{% trans "Size" %}</label></div>
                         <div class="column span-flexible">
                             <p class="readonly">
@@ -125,7 +126,7 @@
             <fieldset class="module collapse closed">
                 <h2 class="collapse-handler">{% trans "Image Versions" %}</h2>
                 {% if settings_var.ADMIN_THUMBNAIL %}
-                <div class="row">
+                <div class="form-row">
                     <div class="column span-4"><label>{% trans "Thumbnail" %}</label></div>
                     <div class="column span-flexible">
                         <img src="{% version fileobject.path settings_var.ADMIN_THUMBNAIL %}" title="{% trans 'View Image' %}" />
@@ -136,7 +137,7 @@
                     {% for version in settings_var.ADMIN_VERSIONS %}
                         {% version_object fileobject version as image_version %}
                         {% version_setting version %}
-                        <div class="row">
+                        <div class="form-row">
                             <div class="column span-4"><label>{{ version_setting.verbose_name }}</label></div>
                             <div class="column span-flexible">
                                 <img src="{{ image_version.url }}" />
@@ -146,12 +147,13 @@
                 {% endif %}
             </fieldset>
             {% endif %}
-            <div class="module footer">
-                <ul class="submit-row">
-                    <li class="left delete-link-container"><a href="{% url filebrowser:fb_delete_confirm %}{% query_string %}" class="delete-link">{% trans "Delete" %}</a></li>
-                    <li class="submit-button-container"><input type="submit" value="{% trans 'Save' %}" class="default" /></li>
-                    <li class="submit-button-container"><input type="submit" value="{% trans 'Save and continue editing' %}" name="_continue" /></li>
-                </ul><br clear="all" />
+            <div class="submit-row">
+                <input type="submit" value="{% trans 'Save' %}" class="default" />
+                <p class="deletelink-box">
+                    <a href="{% url filebrowser:fb_delete_confirm %}{% query_string %}" class="delete-link">{% trans "Delete" %}</a>
+                </p>
+                <input type="submit" value="{% trans 'Save and continue editing' %}" name="_continue" />
+            </div>
             </div>
         </form>
     </div>
