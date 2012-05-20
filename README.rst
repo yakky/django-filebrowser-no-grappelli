@@ -1,7 +1,7 @@
 Django FileBrowser
 ==================
 
-**Media-Management with Grappelli**.
+**Media-Management for Django 1.4+**. (based on https://github.com/sehmaschine/django-filebrowser)
 
 The FileBrowser is an extension to the `Django <http://www.djangoproject.com>`_ administration interface in order to:
 
@@ -14,9 +14,18 @@ Requirements
 
 FileBrowser 3.4.3 requires
 
-* Django 1.3 (http://www.djangoproject.com)
-* Grappelli 2.3.7 (https://github.com/sehmaschine/django-grappelli)
+* Django 1.4 (http://www.djangoproject.com)
 * PIL (http://www.pythonware.com/products/pil/)
+
+No Grapelli
+-----------
+
+This fork removes the dependency on Grappeli.
+
+Installation
+------------
+
+    pip install -e git+git://github.com/smacker/django-filebrowser-no-grappelli-django14.git#egg=django-filebrowser
 
 Documentation
 -------------
