@@ -114,10 +114,12 @@ ul.pulldown-versions {
     background: #eee;
     background: #309bbf;
     box-shadow: 0 0 50px #333; -moz-box-shadow: 0 0 50px #333; -webkit-box-shadow: 0 0 50px #333;
+    list-style: none;
 }
 ul.pulldown-versions li {
     border-top: 1px solid #3da8cc;
     border-bottom: 1px solid #2987a6;
+    list-style: none;
 }
 ul.pulldown-versions li:first-child {
     border-top: 0;
