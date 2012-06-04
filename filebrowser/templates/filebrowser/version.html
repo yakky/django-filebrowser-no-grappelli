@@ -2,6 +2,7 @@
 
 <!-- LOADING -->
 {% load i18n adminmedia fb_tags fb_versions %}
+{% load admin_static %}
 
 <!-- STYLESHEETS -->
 {% block stylesheets %}
@@ -10,8 +11,12 @@
 {% endblock %}
 
 <!-- JAVASCRIPTS -->
-{% block javascripts %}
-    {{ block.super }}
+{% block extrahead %}
+    <script type="text/javascript" src="{{ jsi18nurl|default:"../../../jsi18n/" }}"></script>
+    <script type="text/javascript" src="{% static "admin/js/core.js" %}"></script>
+    <script type="text/javascript" src="{% static "admin/js/RelatedObjectLookups.js" %}"></script>
+    <script type="text/javascript" src="{% static "admin/js/jquery.js" %}"></script>
+    <script type="text/javascript" src="{% static "admin/js/jquery.init.js" %}"></script>
     {% ifequal query.pop '1' %} <!-- FileBrowseField -->
     <script language="javascript" type="text/javascript" src="{{ settings_var.URL_FILEBROWSER_MEDIA }}js/FB_FileBrowseField.js"></script>
     {% endifequal %}
