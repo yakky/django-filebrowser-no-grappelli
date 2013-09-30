@@ -1,7 +1,8 @@
 {% extends "admin/base_site.html" %}
 
 <!-- LOADING -->
-{% load i18n adminmedia fb_tags fb_versions admin_static %}
+{% load i18n fb_tags fb_versions admin_static %}
+{% load url from future %}
 
 <!-- STYLESHEETS -->
 {% block extrastyle %}
@@ -48,9 +49,9 @@
         </fieldset>
         <div class="submit-row">
             <p class="deletelink-box">
-                <a href="{% url filebrowser:fb_detail %}{% query_string %}" class="deletelink">{% trans "Cancel" %}</a>
+                <a href="{% url 'filebrowser:fb_detail' %}{% query_string %}" class="deletelink">{% trans "Cancel" %}</a>
             </p>
-            <a href="{% url filebrowser:fb_delete %}{% query_string %}" class="button default">{% trans "Yes, I'm sure" %}</a>
+            <a href="{% url 'filebrowser:fb_delete'' %}{% query_string %}" class="button default">{% trans "Yes, I'm sure" %}</a>
         </div>
     </form>
 </div>
