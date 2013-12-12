@@ -260,7 +260,6 @@ class FileObject():
         return self._exists_stored
     
     # PATH/URL ATTRIBUTES
-    
     def _path_relative_directory(self):
         "path relative to DIRECTORY"
         return path_strip(self.path, self.site.directory)
@@ -272,10 +271,13 @@ class FileObject():
     
     def _url(self):
         return self.site.storage.url(self.path)
-    url = property(_url)
+    url = property(_url)    
 
+    @property
+    def url_full(self):
+        return self.url
+    
     # IMAGE ATTRIBUTES
-
     _dimensions_stored = None
     def _dimensions(self):
         if self.filetype != 'Image':
