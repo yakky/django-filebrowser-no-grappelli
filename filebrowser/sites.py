@@ -475,7 +475,10 @@ class FileBrowserSite(object):
         if request.method == "POST":
             if request.is_ajax(): # Advanced (AJAX) submission
                 folder = request.GET.get('folder')
-                filedata = ContentFile(request.raw_post_data)
+		if hasattr(request, 'raw_post_data'):
+                    filedata = ContentFile(request.raw_post_data)
+		else:
+                    filedata = ContentFile(request.body)
                 try:
                     filedata.name = convert_filename(request.GET['qqfile'])
                 except KeyError:
