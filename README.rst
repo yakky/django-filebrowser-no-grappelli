@@ -1,7 +1,9 @@
-Django FileBrowser
-==================
+Django FileBrowser - Nephila
+============================
 
-**Media-Management for Django 1.4+**. (based on https://github.com/sehmaschine/django-filebrowser)
+**Fork of http://github.com/smacker/django-filebrowser-no-grappelli-django14**
+
+Works with Django 1.6
 
 The FileBrowser is an extension to the `Django <http://www.djangoproject.com>`_ administration interface in order to:
 
@@ -14,8 +16,8 @@ Requirements
 
 FileBrowser 3.4.3 requires
 
-* Django 1.4 (http://www.djangoproject.com)
-* PIL (http://www.pythonware.com/products/pil/)
+* Django 1.4+ (http://www.djangoproject.com)
+* pillowf
 
 No Grapelli
 -----------
