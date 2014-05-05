@@ -45,7 +45,7 @@
         <script type="text/javascript" charset="utf-8">
             (function($) {
                 $(document).ready(function() {
-                    FileSubmit('{{ image_version.path }}', '{{ image_version.url }}', '{{ thumbnail_version.url }}', '{{ image_version.filetype }}');
+                    FileSubmit('{{ image_version.path }}', '{{ image_version.url|complete_url }}', '{{ thumbnail_version.url|complete_url }}', '{{ image_version.filetype }}');
                 });
             })(django.jQuery);
         </script>
