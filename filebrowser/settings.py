@@ -82,6 +82,11 @@ SHOW_PLACEHOLDER = getattr(settings, "FILEBROWSER_SHOW_PLACEHOLDER", False)
 FORCE_PLACEHOLDER = getattr(settings, "FILEBROWSER_FORCE_PLACEHOLDER", False)
 
 # EXTRA SETTINGS
+# True to save the URL including MEDIA_URL to your model fields
+# or False (default) to save path relative to MEDIA_URL.
+# Note: Full URL does not necessarily means absolute URL.
+SAVE_FULL_URL = getattr(settings, "FILEBROWSER_SAVE_FULL_URL", True)
+ABSOLUTE_URL = getattr(settings, "FILEBROWSER_ABSOLUTE_URL", False)
 # If set to True, the FileBrowser will not try to import a mis-installed PIL.
 STRICT_PIL = getattr(settings, 'FILEBROWSER_STRICT_PIL', False)
 # PIL's Error "Suspension not allowed here" work around:

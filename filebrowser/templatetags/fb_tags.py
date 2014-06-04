@@ -3,11 +3,21 @@
 # DJANGO IMPORTS
 from django import template
 from django.utils.http import urlquote
+from django.contrib.sites.models import Site
 
 # FILEBROWSER IMPORTS
-from filebrowser.settings import SELECT_FORMATS
+from filebrowser.settings import SELECT_FORMATS, ABSOLUTE_URL
 
 register = template.Library()
+
+
+@register.filter
+def complete_url(value):
+    """ Returns the integer remainder of the division of value by arg """
+    if ABSOLUTE_URL:
+        return "http://%s%s" % (Site.objects.get_current().domain,value)
+    else:
+        return value
 
 
 @register.inclusion_tag('filebrowser/include/_response.html', takes_context=True)
