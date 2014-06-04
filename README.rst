@@ -14,10 +14,10 @@ The FileBrowser is an extension to the `Django <http://www.djangoproject.com>`_ 
 Requirements
 ------------
 
-FileBrowser 3.4.3 requires
+FileBrowser 3.4 requires
 
 * Django 1.4+ (http://www.djangoproject.com)
-* pillowf
+* pillow
 
 No Grapelli
 -----------
@@ -27,7 +27,7 @@ This fork removes the dependency on Grappeli.
 Installation
 ------------
 
-    pip install -e git+git://github.com/smacker/django-filebrowser-no-grappelli-django14.git#egg=django-filebrowser
+    pip install django-filebrowser-no-grappelli-nph
 
 Documentation
 -------------

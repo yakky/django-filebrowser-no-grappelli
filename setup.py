@@ -2,18 +2,18 @@ import os
 import codecs
 from setuptools import setup, find_packages
 
+from filebrowser import __version__
 
 def read(fname):
     return codecs.open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
     name='django-filebrowser-no-grappelli-nph',
-    version='3.4.4',
+    version=__version__,
     description='Media-Management',
     long_description = read('README.rst'),
-    author='Patrick Kranzlmueller, Axel Swoboda, Vaclav Mikolasek (vonautomatisch)',
-    author_email='office@vonautomatisch.at',
-    url = 'http://django-filebrowser.readthedocs.org',
+    author='Nephila',
+    author_email='info@nephila.it',
     download_url='',
     packages=find_packages(),
     include_package_data=True,
