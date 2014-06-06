@@ -12,6 +12,7 @@ from filebrowser.settings import *
 from filebrowser.functions import get_file_type, url_join, get_version_path, \
     get_original_path, sort_by_attr, version_generator, path_strip, url_strip
 from django.utils.encoding import smart_str, smart_unicode
+from . import settings as fb_settings
 
 # PIL import
 if STRICT_PIL:
@@ -290,7 +291,7 @@ class FileObject():
         """
         Full URL including MEDIA_URL.
         """
-        return force_unicode(url_join(fb_settings.MEDIA_URL, self.url_rel))
+        return self.site.storage.url(self.path)
 
     # IMAGE ATTRIBUTES
     _dimensions_stored = None
