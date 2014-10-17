@@ -201,6 +201,10 @@ class FileObject():
             site = default_site
         self.site = site
         self.path = path
+        if self.path.startswith(settings.MEDIA_URL):
+            self.path = smart_unicode(self.path).replace(settings.MEDIA_URL, '')
+        else:
+            self.path = smart_unicode(self.path)
         self.head = os.path.dirname(path)
         self.filename = os.path.basename(path)
         self.filename_lower = self.filename.lower()
@@ -208,7 +212,7 @@ class FileObject():
         self.mimetype = mimetypes.guess_type(self.filename)
 
     def __str__(self):
-        return smart_str(self.path)
+        return smart_unicode(self.path)
 
     def __unicode__(self):
         return smart_unicode(self.path)
