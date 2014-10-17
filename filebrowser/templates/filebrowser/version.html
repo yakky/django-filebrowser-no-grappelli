@@ -54,7 +54,7 @@
         <script type="text/javascript" charset="utf-8">
             (function($) {
                 $(document).ready(function() {
-                    FileBrowserDialogue.fileSubmit('{{ image_version.url|escapejs }}');
+                    FileBrowserDialogue.fileSubmit('{{ image_version.url|complete_url|escapejs }}');
                 });
             })(django.jQuery);
         </script>
