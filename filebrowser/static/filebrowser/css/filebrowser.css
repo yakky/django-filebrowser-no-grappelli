@@ -57,7 +57,22 @@ button.fb_selectlink {
     padding-bottom: 4px;
     height: 24px;
     font-size: 11px;
+    background: #309bbf;
+    background: -moz-linear-gradient(top, #33a6cc, #309bbf);
+    background: -webkit-gradient(linear, left top, left bottom, from(#33a6cc), to(#309bbf));
+    color: white;
+    border:none;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
+
+button.fb_selectlink :hover, button.fb_selectlink :active {
+    background: #666 ;
+    background: -moz-linear-gradient(top, #555, #444);
+    background: -webkit-gradient(linear, left top, left bottom, from(#555), to(#444));
+}
+
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     button.fb_selectlink {
@@ -76,7 +91,7 @@ button.fb_selectlink {
 .pulldown-versions-handler {
     position: relative;
     display: block;
-    top: -4px;
+    top: 4px;
     margin-left: 2px;
     width: 24px;
     height: 24px;
