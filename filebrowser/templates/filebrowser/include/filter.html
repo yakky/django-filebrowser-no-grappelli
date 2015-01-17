@@ -1,5 +1,6 @@
-{% load i18n fb_tags %}
-<div id="changelist-filter">
+{% load i18n fb_tags i18n nephila_admin %}
+<a href="#" id="changelist-filter-button">{% trans "Filter:" %} {% if query.filter_date or query.filter_type %}{% trans "on" %}{% else %}{% trans "off" %}{% endif %}</a>
+<div id="changelist-filter" style="display:none;">
     <h2>{% trans 'Filter' %}</h2>
     <h3>{% trans "By Date" %}</h3>
     <ul>

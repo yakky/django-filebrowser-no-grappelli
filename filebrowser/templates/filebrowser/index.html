@@ -9,6 +9,24 @@
     {{ block.super }}
     <link rel="stylesheet" type="text/css" href="{% static "admin/css/changelists.css" %}" />
     <link rel="stylesheet" type="text/css" href="{{ settings_var.URL_FILEBROWSER_MEDIA }}css/filebrowser.css" />
+    {% if DJANGOCMS_2 %}
+        <script type="text/javascript" src="{% static 'js/jquery.load.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'cms/css/pages.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'cms/css/jquery.dialog.css' %}" />
+    {% elif DJANGOCMS_3 %}
+        <script type="text/javascript" src="{% static 'cms/js/libs/jquery.min.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'cms/css/cms.pagetree.css' %}"/>
+    {% elif not DJANGOCMS %}
+        <script type="text/javascript" src="{% static 'js/jquery.load.js' %}"></script>
+    {% endif %}
+    <script type="text/javascript">
+    $(document).ready(function(){
+       $("#changelist-filter-button").click(function(event){
+           event.preventDefault();
+            $("#changelist-filter").toggle();
+       }) ;
+    });
+    </script>
 {% endblock %}
 
 <!-- JAVASCRIPTS -->
