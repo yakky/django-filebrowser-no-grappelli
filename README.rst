@@ -19,10 +19,10 @@ FileBrowser 3.4 requires
 * Django 1.4+ (http://www.djangoproject.com)
 * pillow
 
-No Grapelli
------------
+No Grappelli
+------------
 
-This fork removes the dependency on Grappeli.
+This fork removes the dependency on Grappelli.
 
 Installation
 ------------

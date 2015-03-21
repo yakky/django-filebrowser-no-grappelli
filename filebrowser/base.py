@@ -27,13 +27,13 @@ else:
 class FileListing():
     """
     The FileListing represents a group of FileObjects/FileDirObjects.
-    
+
     An example::
-        
+
         import os
         from filebrowser.settings import MEDIA_ROOT, DIRECTORY
         from filebrowser.base import FileListing
-        
+
         filelisting = FileListing(os.path.join(MEDIA_ROOT, DIRECTORY), sorting_by='date', sorting_order='desc')
         print filelisting.files_listing_total()
         print filelisting.results_listing_total()
@@ -184,13 +184,13 @@ class FileListing():
 class FileObject():
     """
     The FileObject represents a file (or directory) on the server.
-    
+
     An example::
-        
+
         from filebrowser.base import FileObject
-        
+
         fileobject = FileObject(path)
-    
+
     where path is a relative path to a storage location.
     """
 
@@ -281,6 +281,11 @@ class FileObject():
     def path_relative_directory(self):
         "path relative to DIRECTORY"
         return path_strip(self.path, self.site.directory)
+
+    @property
+    def path_full(self):
+        "Absolute path as defined with site.storage"
+        return self.site.storage.path(self.path)
 
     @property
     def dir(self):
